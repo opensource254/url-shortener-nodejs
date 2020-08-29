@@ -1,0 +1,9 @@
+server{
+	listen 80;
+	listen [::]:80;
+
+	server_name localhost;
+	location ~* "^/[0-9a-z@]{5,15}$"  {
+         rewrite ^/(.*)$ http://localhost:5000/api/item/$1 redirect;
+    }
+}
